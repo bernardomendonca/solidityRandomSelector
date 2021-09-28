@@ -7,8 +7,16 @@ pragma solidity ^0.4.17;
 contract Lottery {
     //
     address public manager;
+    //initialising dynamic array with addresses:
+    address[] public players;
 
     function Lottery() public {
-        
+        manager = msg.sender;
+    }
+
+    // enter function -> When someone enters the draw, we add their address to the array
+    // since the player has to pay to some ETH to enter the dray, it's a payable function:
+    function enter() payable {
+        players.push(msg.sender);
     }
 }
